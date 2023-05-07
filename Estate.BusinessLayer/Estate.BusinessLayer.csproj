@@ -11,4 +11,8 @@
     <ProjectReference Include="..\Estate.EntityLayer\Estate.EntityLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="10.4.0" />
+  </ItemGroup>
+
 </Project>

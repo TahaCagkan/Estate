@@ -9,7 +9,6 @@ namespace Estate.CoreLayer.Abstract
         T GetById(int id);
         void Add(T parameter);
         void Delete(T parameter);
-
         void Update(T parameter);
 
     }

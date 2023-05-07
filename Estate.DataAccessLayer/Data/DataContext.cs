@@ -6,6 +6,10 @@ namespace Estate.DataAccessLayer.Data
 {
     public class DataContext:IdentityDbContext<UserAdmin>
     {
+        public DataContext()
+        {
+        }
+
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
         //    optionsBuilder.UseSqlServer("Server  =DESKTOP-0TJT8G1; Database = Estate; Integrated Security = True;");
