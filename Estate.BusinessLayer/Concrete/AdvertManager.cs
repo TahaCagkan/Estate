@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace Estate.BusinessLayer.Concrete
 {
-    public class AdvertManager : IGenericService<Advert>
+    public class AdvertManager : IAdvertService
     {
         IAdvertRepository _advertRepository;
 
@@ -15,6 +15,8 @@ namespace Estate.BusinessLayer.Concrete
         }
         public void Add(Advert parameter)
         {
+            parameter.Status = true;
+            parameter.AdvertDate=DateTime.Now;
             _advertRepository.Add(parameter);
         }
 

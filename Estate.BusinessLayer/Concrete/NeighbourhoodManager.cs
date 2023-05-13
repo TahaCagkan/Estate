@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace Estate.BusinessLayer.Concrete
 {
-    public class NeighbourhoodManager : IGenericService<Neighbourhood>
+    public class NeighbourhoodManager : INeighbourhoodService
     {
         INeighbourhoodRepository _neighbourhoodRepository;
 

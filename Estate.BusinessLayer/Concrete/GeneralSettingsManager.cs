@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace Estate.BusinessLayer.Concrete
 {
-    public class GeneralSettingsManager : IGenericService<GeneralSettings>
+    public class GeneralSettingsManager : IGeneralSettingsService
     {
         IGeneralSettingsRepository _generalSettingsRepository;
 

@@ -9,7 +9,6 @@ namespace Estate.BusinessLayer.ValidationRules
         {
             RuleFor(x => x.DistrictName).NotEmpty().WithMessage("Semt adı bilgisi boş geçilemez!!!");
             RuleFor(x => x.CityId).NotEmpty().WithMessage("Şehir alanı boş geçilemez!!!");
-
         }
     }
 }

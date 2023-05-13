@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace Estate.BusinessLayer.Concrete
 {
-    public class SituationManager : IGenericService<Situation>
+    public class SituationManager : ISituationService
     {
         ISituationRepository _situationRepository;
 

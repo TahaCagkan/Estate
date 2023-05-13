@@ -2,7 +2,7 @@
 
 namespace Estate.BusinessLayer.Abstract
 {
-    public interface ICityService : IGenericService<Advert>
+    public interface ICityService : IGenericService<City>
     {
     }
 }

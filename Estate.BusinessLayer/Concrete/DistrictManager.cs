@@ -5,11 +5,11 @@ using System.Linq.Expressions;
 
 namespace Estate.BusinessLayer.Concrete
 {
-    public class DistictManager : IGenericService<District>
+    public class DistrictManager : IDistrictService
     {
         IDistrictRepository _districtRepository;
 
-        public DistictManager(IDistrictRepository districtRepository)
+        public DistrictManager(IDistrictRepository districtRepository)
         {
             _districtRepository = districtRepository;
         }

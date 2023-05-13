@@ -2,7 +2,7 @@
 
 namespace Estate.BusinessLayer.Abstract
 {
-    public interface IDistictService:IGenericService<District>
+    public interface IDistrictService:IGenericService<District>
     {
     }
 }

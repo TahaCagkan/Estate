@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace Estate.BusinessLayer.Concrete
 {
-    public class TypeManager : IGenericService<EntityLayer.Entities.Type>
+    public class TypeManager : ITypeService
     {
         ITypeRepository _typeRepository;
 

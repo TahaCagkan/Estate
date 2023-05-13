@@ -18,11 +18,13 @@ namespace Estate.DataAccessLayer.Concrete
         public void Add(T parameter)
         {
             _object.Add(parameter);
+            context.SaveChanges();
         }
 
         public void Delete(T parameter)
         {
             _object.Remove(parameter);
+            context.SaveChanges();
         }
 
         public List<T> GetAllList()
@@ -43,6 +45,7 @@ namespace Estate.DataAccessLayer.Concrete
         public void Update(T parameter)
         {
             _object.Update(parameter);
+            context.SaveChanges();
         }
     }
 }

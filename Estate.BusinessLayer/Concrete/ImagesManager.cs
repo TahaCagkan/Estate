@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace Estate.BusinessLayer.Concrete
 {
-    public class ImagesManager : IGenericService<Images>
+    public class ImagesManager : IImagesService
     {
         IImagesRepository _imagesRepository;
 

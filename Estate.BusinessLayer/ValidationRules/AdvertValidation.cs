@@ -9,7 +9,7 @@ namespace Estate.BusinessLayer.ValidationRules
         {
             RuleFor(x => x.Address).NotEmpty().WithMessage("Adres bilgisi boş geçilemez!!!");
             RuleFor(x => x.AdvertTitle).NotEmpty().WithMessage("İlan başlığı boş geçilemez!!!");
-            RuleFor(x => x.AdvertTitle).MinimumLength(300).MaximumLength(500).WithMessage("En az 300, En çok 500 karakter girilmek zorunda!!!");
+            RuleFor(x => x.AdvertTitle).MinimumLength(10).MaximumLength(500).WithMessage("En az 10, En çok 500 karakter girilmek zorunda!!!");
             RuleFor(x => x.Area).NotEmpty().WithMessage("Bu alan boş geçilemez!!!");
             RuleFor(x => x.BathroomNumbers).NotEmpty().WithMessage("Bu alan boş geçilemez!!!");
             RuleFor(x => x.NumberOfrooms).NotEmpty().WithMessage("Oda sayısı alanı boş geçilemez!!!");
@@ -18,7 +18,7 @@ namespace Estate.BusinessLayer.ValidationRules
             RuleFor(x => x.Garage).NotEmpty().WithMessage("Garaj alanı boş geçilemez!!!");
             RuleFor(x => x.Price).NotEmpty().WithMessage("Fiyat alanı boş geçilemez!!!");
             RuleFor(x => x.PhoneNumber).NotEmpty().WithMessage("Telefon Numarası alanı boş geçilemez!!!");
-            RuleFor(x => x.NeihbourhoodId).NotEmpty().WithMessage("Mahalle alanı boş geçilemez!!!");
+            RuleFor(x => x.NeighbourhoodId).NotEmpty().WithMessage("Mahalle alanı boş geçilemez!!!");
             RuleFor(x => x.DistrictId).NotEmpty().WithMessage("Semt alanı boş geçilemez!!!");
             RuleFor(x => x.TypeId).NotEmpty().WithMessage("Tip alanı boş geçilemez!!!");
             RuleFor(x => x.CityId).NotEmpty().WithMessage("Şehir alanı boş geçilemez!!!");
