@@ -1,0 +1,37 @@
+﻿@model List<Images>
+
+@{
+    ViewData["Title"] = "ImageList";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+
+    <!-- resimler -->
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-3 col-lg-3 col-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="pull-right"><strong>Id:</strong> @item.ImageId</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center">
+                            <img src="~/img/@item.ImageName" width="250" height="200" />
+                            </div>
+                    </div>
+                    <div class="caption">
+                        <h6 class="text-center">
+                            @item.Advert.AdvertTitle
+                        </h6>
+                    </div>
+                    <div class="text-center">
+                        <a asp-action="ImageUpdate" asp-route-id="@item.ImageId" class="btn btn-primary" style="margin-bottom:10px;"><i class="fas fa-edit mr-2"></i> Güncelle</a>
+                        <a asp-action="ImageDelete" asp-route-id="@item.ImageId" class="btn btn-danger" style="margin-bottom:10px;" onclick="return confirm('silmek istediğinize emin misiniz?')"><i class="fas fa-trash mr-2"></i>  Sil</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

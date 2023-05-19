@@ -52,10 +52,10 @@ else
                     <td>@item.Area</td>
                     <td>@item.Floor</td>
                     <td>@item.Address</td>
-                        <td><a class="btn btn-success" asp-action="ImageList" asp-route-id="@item.AdvertId"><i class="fas fa-search mr-2"></i>İlan Resimleri</a></td>
-                        <td><a class="btn btn-info" asp-action="ImageCreate" asp-route-id="@item.AdvertId"><i class="fas fa-plus mr-2"></i>Resim Ekle</a></td>
-                        <td><a class="btn btn-danger" data-id="@item.AdvertId" id="delete"><i class="fas fa-trash mr-2"></i>Sil</a></td>
-                        <td><a class="btn btn-warning" asp-action="Update" asp-route-id="@item.AdvertId"><i class="fas fa-edit mr-2"></i>Güncelle</a></td>
+                        <td><a class="btn btn-success" asp-action="ImageList" asp-route-id="@item.AdvertId"><i class="fas fa-search mr-2"></i> İlan Resimleri</a></td>
+                        <td><a class="btn btn-info" asp-action="ImageCreate" asp-route-id="@item.AdvertId"><i class="fas fa-plus mr-2"></i> Resim Ekle</a></td>
+                        <td><a class="btn btn-danger" data-id="@item.AdvertId" id="delete"><i class="fas fa-trash mr-2"></i> Sil</a></td>
+                        <td><a class="btn btn-warning" asp-action="Update" asp-route-id="@item.AdvertId"><i class="fas fa-edit mr-2"></i> Güncelle</a></td>
                 </tr>
 
             }
@@ -63,3 +63,34 @@ else
     </table>
     </div>
 }
+<script type="text/javascript">
+    $("#table").on("click", "#delete", function () {
+
+        var id = $(this).data("id");
+
+        swal({
+            title: "Silmek İstiyor musunuz?",
+            text: "İlan Silinecek gerçekten silmek istediğinize emin misiniz!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        type: "GET",
+                        url: '/Admin/Advert/Delete/' + id,
+
+                        success: function () {
+                            toastr.error("İlan Silme İşlmei başarıyla gerçekleştirildi.")
+
+                        }
+                    });
+
+                    $(this).parent("td").parent("tr").remove();
+                }
+            });
+
+    });
+
+</script>

@@ -1,0 +1,62 @@
+﻿@model Images
+
+@{
+    ViewData["Title"] = "ImageUpdate";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post" enctype="multipart/form-data" asp-antiforgery="true">
+    <input type="hidden" asp-for="ImageId" />
+    <input type="hidden" asp-for="AdvertId" />
+    <div class="form-group">
+        <div class="col-md-4">
+          <input disabled type="text" asp-for="Advert.AdvertTitle" class="form-control" />
+        </div>
+      
+
+    </div>
+
+    <hr />
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+                <div class="col-md-4">
+
+                    @if (Model.ImageId != 0)
+                    {
+                                <h5 class="text-rigt">Şu an ki resim:</h5>
+                                <img src="~/img/@Model.ImageName" width="250" height="200" />
+                    }
+                </div>
+                <div class="col-md-4">
+                    <div id="alanOnizleme" style="display:none!important;">
+                    <h5 class="text-rigt">Seçtiğiniz resim:</h5>
+                        <img id="resimOnizleme" src="" width="250" height="200" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                </div>
+        </div>
+        <div class="col-md-12">
+            <label> Resim Seç:</label>
+            <input type="file" class="form-control-file" asp-for="Image" name="resim" id="Resim" />
+        </div>
+    </div>
+    <div class="text-center">
+
+    <button type="submit" class=" btn btn-info mt-2">
+        <i class="fas fa-check mr-2"></i>
+        Kaydet
+    </button>
+    </div>
+</form>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#Resim").change(function (e) {
+            $("#alanOnizleme").show();
+            $("#resimOnizleme").attr('src', URL.createObjectURL(e.target.files[0]));
+        });
+    });
+</script>

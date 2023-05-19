@@ -16,5 +16,12 @@ namespace Estate.DataAccessLayer.Concrete
         {
             this.context= context;
         }
+        public void FullDelete(Advert parameter)
+        {
+            var advert = context.Adverts.Find(parameter.AdvertId);
+
+            context.Adverts.Remove(advert);
+            context.SaveChanges();
+        }
     }
 }

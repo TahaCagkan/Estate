@@ -1,0 +1,88 @@
+﻿@model List<Advert>
+@{
+    ViewData["Title"] = "DeleteList";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@if (Model.Count == 0)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="alert alert-success">Herhangi bir silinan ilan yok.</div>
+            </div>
+        </div>
+    </div>
+}
+
+else
+{
+    <div style="margin-left:10px; margin-right:10px;">
+
+        <table class="table table-striped" id="table">
+            <tr style="color:black;">
+                <th>Açıklama</th>
+                <th>Fiyat</th>
+                <th>Oda Sayısı</th>
+                <th>Banyo Sayısı</th>
+                <th>Alanı</th>
+                <th>Kat</th>
+                <th>Adres</th>
+                <th>İlan Resimleri</th>
+                <th>Geri Yükle</th>
+                <th>Tamamen Sil</th>
+            </tr>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Description</td>
+                        <td>@item.Price</td>
+                        <td>@item.NumberOfrooms</td>
+                        <td>@item.BathroomNumbers</td>
+                        <td>@item.Area</td>
+                        <td>@item.Floor</td>
+                        <td>@item.Address</td>
+                        <td><a class="btn btn-success" asp-action="AdvertImages" asp-route-id="@item.AdvertId"><i class="fas fa-search mr-2"></i> İlan Resimleri</a></td>
+                        <td><a class="btn btn-warning" asp-action="RestoreDeleted" asp-route-id="@item.AdvertId"><i class="fas fa-edit mr-2"></i> Geri Yüle</a></td>
+                        <td><a class="btn btn-danger" data-id="@item.AdvertId" id="delete"><i class="fas fa-trash mr-2"></i> Tamamen Sil</a></td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+}
+<script type="text/javascript">
+    $("#table").on("click", "#delete", function () {
+
+        var id = $(this).data("id");
+
+        swal({
+            title: "Silmek İsitoyr musunuz?",
+            text: "İlan Silinecek gerçekten silmek istediğinize emin misiniz!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        type: "GET",
+                        url: '/Admin/Advert/FullDeleted/' + id,
+
+                        success: function () {
+                            toastr.error("İlan Silme İşlmei başarıyla gerçekleşti")
+
+                        }
+                    });
+
+                    $(this).parent("td").parent("tr").remove();
+                }
+            });
+
+    });
+
+</script>
+

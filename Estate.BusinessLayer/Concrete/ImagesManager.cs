@@ -40,7 +40,9 @@ namespace Estate.BusinessLayer.Concrete
 
         public void Update(Images parameter)
         {
-            _imagesRepository.Update(parameter);
+            var update = _imagesRepository.GetById(parameter.ImageId);
+            update.ImageName = parameter.Image.FileName;
+            _imagesRepository.Update(update);
         }
     }
 }

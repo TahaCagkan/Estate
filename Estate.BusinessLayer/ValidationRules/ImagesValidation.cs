@@ -7,9 +7,7 @@ namespace Estate.BusinessLayer.ValidationRules
     {
         public ImagesValidation()
         {
-            RuleFor(x => x.ImageName).NotEmpty().WithMessage("Resim adı bilgisi boş geçilemez!!!");
-            RuleFor(x => x.AdvertId).NotEmpty().WithMessage("İlan bilgisi boş geçilemez!!!");
-
+            RuleFor(x => x.Image).NotEmpty().WithMessage("Resim bilgisi boş geçilemez!!!");
         }
     }
 }
