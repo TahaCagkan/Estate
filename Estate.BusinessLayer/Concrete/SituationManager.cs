@@ -2,6 +2,7 @@
 using Estate.DataAccessLayer.Abstract;
 using Estate.EntityLayer.Entities;
 using System.Linq.Expressions;
+using System.Net.NetworkInformation;
 
 namespace Estate.BusinessLayer.Concrete
 {
@@ -15,12 +16,15 @@ namespace Estate.BusinessLayer.Concrete
         }
         public void Add(Situation parameter)
         {
+            parameter.Status = true;
             _situationRepository.Add(parameter);
         }
 
         public void Delete(Situation parameter)
         {
-            _situationRepository.Delete(parameter);
+            var status = _situationRepository.GetById(parameter.SituationId);
+            status.Status = false;
+            _situationRepository.Update(status);
         }
 
         public List<Situation> GetAllList()
@@ -40,7 +44,9 @@ namespace Estate.BusinessLayer.Concrete
 
         public void Update(Situation parameter)
         {
-            _situationRepository.Update(parameter);
+            var status = _situationRepository.GetById(parameter.SituationId);
+            status.SituationName = parameter.SituationName;
+            _situationRepository.Update(status);
         }
     }
 }

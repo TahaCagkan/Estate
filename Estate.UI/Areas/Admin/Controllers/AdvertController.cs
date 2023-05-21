@@ -14,13 +14,13 @@ namespace Estate.UI.Areas.Admin.Controllers
     [Authorize(Roles = "Admin")]
     public class AdvertController : Controller
     {
-        IAdvertService _advertService;
-        ICityService _cityService;
-        IDistrictService _districtService;
-        INeighbourhoodService _neighbourhoodService;
-        ISituationService _situationService;
-        ITypeService _typeService;
-        IImagesService _imagesService;
+        private readonly IAdvertService _advertService;
+        private readonly ICityService _cityService;
+        private readonly IDistrictService _districtService;
+        private readonly INeighbourhoodService _neighbourhoodService;
+        private readonly ISituationService _situationService;
+        private readonly ITypeService _typeService;
+        private readonly IImagesService _imagesService;
 
         IWebHostEnvironment _hostEnvironment;
         public AdvertController(IAdvertService advertService, ICityService cityService, IDistrictService districtService, INeighbourhoodService neighbourhoodService, ISituationService situationService, ITypeService typeService, IWebHostEnvironment hostEnvironment, IImagesService imagesService)
@@ -205,9 +205,6 @@ namespace Estate.UI.Areas.Admin.Controllers
             if (result.IsValid)
             {
                 _advertService.Update(data);
-
-
-
                 TempData["Update"] = "İlan Güncelleme İşlemi Başarıyla Gerçekleştirildi.";
                 return RedirectToAction("Index");
             }

@@ -14,12 +14,15 @@ namespace Estate.BusinessLayer.Concrete
         }
         public void Add(EntityLayer.Entities.Type parameter)
         {
+            parameter.Status = true;
             _typeRepository.Add(parameter);
         }
 
         public void Delete(EntityLayer.Entities.Type parameter)
         {
-            _typeRepository.Delete(parameter);
+            var type = _typeRepository.GetById(parameter.TypeId);
+            type.Status = false;
+            _typeRepository.Update(type);
         }
 
         public List<EntityLayer.Entities.Type> GetAllList()
@@ -39,7 +42,10 @@ namespace Estate.BusinessLayer.Concrete
 
         public void Update(EntityLayer.Entities.Type parameter)
         {
-            _typeRepository.Update(parameter);
+            var type = _typeRepository.GetById(parameter.TypeId);
+            type.TypeName = parameter.TypeName;
+            type.SituationId = parameter.SituationId;
+            _typeRepository.Update(type);
         }
     }
 }

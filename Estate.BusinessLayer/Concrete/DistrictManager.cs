@@ -15,12 +15,15 @@ namespace Estate.BusinessLayer.Concrete
         }
         public void Add(District parameter)
         {
+            parameter.Status = true;
             _districtRepository.Add(parameter);
         }
 
         public void Delete(District parameter)
         {
-            _districtRepository.Delete(parameter);
+            var delete = _districtRepository.GetById(parameter.DistrictId);
+            delete.Status = false;
+            _districtRepository.Update(delete);
         }
 
         public List<District> GetAllList()
@@ -40,7 +43,10 @@ namespace Estate.BusinessLayer.Concrete
 
         public void Update(District parameter)
         {
-            _districtRepository.Update(parameter);
+            var district = _districtRepository.GetById(parameter.DistrictId);
+            district.DistrictName = parameter.DistrictName;
+            district.CityId = parameter.CityId;
+            _districtRepository.Update(district);
         }
     }
 }

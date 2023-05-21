@@ -15,12 +15,15 @@ namespace Estate.BusinessLayer.Concrete
         }
         public void Add(Neighbourhood parameter)
         {
+            parameter.Status = true;
             _neighbourhoodRepository.Add(parameter);
         }
 
         public void Delete(Neighbourhood parameter)
         {
-            _neighbourhoodRepository.Delete(parameter);
+            var neigh = _neighbourhoodRepository.GetById(parameter.NeighbourhoodId);
+            neigh.Status = false;
+            _neighbourhoodRepository.Update(neigh);
         }
 
         public List<Neighbourhood> GetAllList()
@@ -40,7 +43,10 @@ namespace Estate.BusinessLayer.Concrete
 
         public void Update(Neighbourhood parameter)
         {
-            _neighbourhoodRepository.Update(parameter);
+            var neigh = _neighbourhoodRepository.GetById(parameter.NeighbourhoodId);
+            neigh.NeighbourhoodName = parameter.NeighbourhoodName;
+            neigh.DistrictId = parameter.DistrictId;
+            _neighbourhoodRepository.Update(neigh);
         }
     }
 }

@@ -13,14 +13,17 @@ namespace Estate.BusinessLayer.Concrete
         {
             _cityRepository = cityRepository;
         }
-          public void Add(City parameter)
+        public void Add(City parameter)
         {
+            parameter.Status = true;
             _cityRepository.Add(parameter);
         }
 
         public void Delete(City parameter)
         {
-            _cityRepository.Delete(parameter);
+            var city = _cityRepository.GetById(parameter.CityId);
+            city.Status =false;
+            _cityRepository.Update(city);
         }
 
         public List<City> GetAllList()
@@ -35,12 +38,14 @@ namespace Estate.BusinessLayer.Concrete
 
         public List<City> GetList(Expression<Func<City, bool>> filter)
         {
-          return _cityRepository.GetList(filter);
+            return _cityRepository.GetList(filter);
         }
 
         public void Update(City parameter)
         {
-            _cityRepository.Update(parameter);
+            var city = _cityRepository.GetById(parameter.CityId);
+            city.CityName = parameter.CityName;
+            _cityRepository.Update(city);
         }
     }
 }
