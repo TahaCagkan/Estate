@@ -13,8 +13,8 @@ namespace Estate.UI.Areas.Admin.Controllers
     public class TypeController : Controller
     {
 
-        ITypeService _typeService;
-        ISituationService _situationService;
+        private readonly ITypeService _typeService;
+        private readonly ISituationService _situationService;
         public TypeController(ITypeService typeService, ISituationService situationService)
         {
             _typeService = typeService;

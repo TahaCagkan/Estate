@@ -8,6 +8,9 @@ using Estate.UI.Areas.Admin.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +23,11 @@ builder.Services.AddDbContext<DataContext>(conf => conf.UseSqlServer(builder.Con
 
 builder.Services.AddIdentity<UserAdmin, IdentityRole>().AddEntityFrameworkStores<DataContext>().AddDefaultTokenProviders();
 
+builder.Services.AddControllers().AddFluentValidation(opt =>
+{
+    opt.DisableDataAnnotationsValidation = true;
+    opt.ValidatorOptions.LanguageManager.Culture = new CultureInfo("tr");
+});
 builder.Services.Configure<IdentityOptions>(opt =>
 {
     opt.SignIn.RequireConfirmedPhoneNumber = false;

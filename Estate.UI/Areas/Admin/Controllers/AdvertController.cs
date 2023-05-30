@@ -5,8 +5,7 @@ using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Extensions.Hosting;
-using System.Collections.Generic;
+
 
 namespace Estate.UI.Areas.Admin.Controllers
 {
@@ -41,6 +40,13 @@ namespace Estate.UI.Areas.Admin.Controllers
 
             var list = _advertService.GetList(x => x.Status == true && x.UserAdminId == id);
 
+            return View(list);
+        }
+        public IActionResult AdvertAll()
+        {
+            string id = HttpContext.Session.GetString("Id");
+
+            var list = _advertService.GetList(x => x.Status == true && x.UserAdminId != id);
             return View(list);
         }
         //ilgili ilandaki detay resimler

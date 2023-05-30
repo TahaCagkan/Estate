@@ -12,7 +12,7 @@ namespace Estate.UI.Areas.Admin.Controllers
     [Authorize(Roles = "Admin")]
     public class StatusController : Controller
     {
-        ISituationService _situationService;
+        private readonly ISituationService _situationService;
 
         public StatusController(ISituationService situationService)
         {

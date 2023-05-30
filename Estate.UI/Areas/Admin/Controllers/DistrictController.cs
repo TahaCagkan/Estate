@@ -13,8 +13,8 @@ namespace Estate.UI.Areas.Admin.Controllers
     [Authorize(Roles = "Admin")]
     public class DistrictController : Controller
     {
-        IDistrictService _districtService;
-        ICityService _cityService;
+        private readonly IDistrictService _districtService;
+        private readonly ICityService _cityService;
         public DistrictController(IDistrictService districtService, ICityService cityService)
         {
             _districtService = districtService;
